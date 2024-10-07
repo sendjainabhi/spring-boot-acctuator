@@ -3,20 +3,20 @@ kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
-    app: spring-demo-app
-  name: spring-demo-app
+    app: spring-actuator
+  name: spring-actuator
   namespace: pve-spring
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: spring-demo-app
+      app: spring-actuator
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: spring-demo-app
+        app: spring-actuator
     spec:
       containers:
       - image: draco.tanzu.lab/spring/demo

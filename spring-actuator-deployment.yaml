@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: spring-actuator
+  name: spring-actuator
+  namespace: spring-actuator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spring-actuator
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: spring-actuator
+    spec:
+      containers:
+        - image: ghcr.io/sendjainabhi/spring-actuator:sha256-c9eaf0be142dca4a65be5b353a189fa45da2cec3373e4b5c82d10f35a2a0d6cb.imgpkg
+          ports:
+            - containerPort: 8080
+          name: spring-actuator
+          env:
+            - name: JAVA_OPTS
+              value: >-
+                -DTELEGRAF_URL=http://aria-telegraf-collector.aria-k8s.svc.cluster.local:2878
+          resources: {}
+          securityContext:
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
+            seccompProfile:
+              type: "RuntimeDefault"
+            capabilities:
+              drop: ["ALL"]
+status: {}

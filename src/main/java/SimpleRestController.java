@@ -10,4 +10,9 @@ public class SimpleRestController {
     public String example() {
         return "Hello User !! Time is >>  " + LocalDateTime.now();
     }
+
+    @GetMapping("/home")
+    public String home() {
+        return "Hello TPK8 User. This is home page of app on K8!!   Local Time is    " + LocalDateTime.now();
+    }
 }
